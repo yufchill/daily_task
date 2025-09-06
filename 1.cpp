@@ -8,17 +8,23 @@ void quick_sort(int q[], int l, int r) {
   if (l >= r) return;
   int mid = (l + r) / 2;
   int x = q[mid];
-  int i = l - 1;
-  int j = r + 1;
+  int i = l;
+  int j = r;
   while (i < j) {
-    while (q[++i] < x);
-    while (q[--j] > x);
-    if (i < j) {
+    while (q[i] < x) {
+      i++;
+    }
+    while (q[j] > x) {
+      j--;
+    }
+    if (i <= j) {
       swap(q[i], q[j]);
+      i++;
+      j--;
     }
   }
   quick_sort(q, l, j);
-  quick_sort(q, j + 1, r);
+  quick_sort(q, i, r);
 }
 
 int main() {
@@ -30,5 +36,4 @@ int main() {
   for (int i = 0; i < n; i++) {
     cout << q[i] << " ";
   }
-  cout << endl;
 }
