@@ -8,23 +8,17 @@ void quick_sort(int q[], int l, int r) {
   if (l >= r) return;
   int mid = (l + r) / 2;
   int x = q[mid];
-  int i = l;
-  int j = r;
+  int i = l - 1;
+  int j = r + 1;
   while (i < j) {
-    while (q[i] < x) {
-      i++;
-    }
-    while (q[j] > x) {
-      j--;
-    }
-    if (i <= j) {
+    while (q[++i] < x);
+    while (q[--j] > x);
+    if (i < j) {
       swap(q[i], q[j]);
-      i++;
-      j--;
     }
   }
   quick_sort(q, l, j);
-  quick_sort(q, i, r);
+  quick_sort(q, j + 1, r);
 }
 
 int main() {
