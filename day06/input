@@ -1,11 +1,2 @@
-10
-push 6
-empty
-query
-pop
-empty
-push 3
-push 4
-pop
-query
-push 6
+5
+3 4 2 7 5
